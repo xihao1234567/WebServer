@@ -49,7 +49,7 @@ class EventLoop {
   std::vector<Functor> pendingFunctors_;
   bool callingPendingFunctors_;
   const pid_t threadId_;
-  shared_ptr<Channel> pwakeupChannel_;
+  shared_ptr<Channel> pwakeupChannel_;   //epoll fd对应的channel
 
   void wakeup();
   void handleRead();
