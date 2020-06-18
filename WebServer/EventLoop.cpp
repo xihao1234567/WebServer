@@ -104,7 +104,7 @@ void EventLoop::loop() {
     for (auto& it : ret) it->handleEvents();
     eventHandling_ = false;
     doPendingFunctors();        //其他线程执行runinloop后的函数会放在dopendingfunctors中
-    poller_->handleExpired();    //分发处理函数
+    poller_->handleExpired();    //分发处理函数，处理timeout
   }
   looping_ = false;
 }
