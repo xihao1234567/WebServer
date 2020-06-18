@@ -1,5 +1,8 @@
 // @Author Lin Ya
 // @Email xxbbb@vip.qq.com
+
+//该server类和muduo类似
+
 #include "Server.h"
 #include <arpa/inet.h>
 #include <netinet/in.h>
@@ -30,7 +33,7 @@ void Server::start() {
   acceptChannel_->setEvents(EPOLLIN | EPOLLET);
   acceptChannel_->setReadHandler(bind(&Server::handNewConn, this));
   acceptChannel_->setConnHandler(bind(&Server::handThisConn, this));
-  loop_->addToPoller(acceptChannel_, 0);
+  loop_->addToPoller(acceptChannel_, 0);   //向epoll中注册事件，timeout设置为0
   started_ = true;
 }
 
