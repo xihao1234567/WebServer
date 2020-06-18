@@ -95,7 +95,7 @@ void EventLoop::loop() {
   looping_ = true;
   quit_ = false;
   // LOG_TRACE << "EventLoop " << this << " start looping";
-  std::vector<SP_Channel> ret;
+  std::vector<SP_Channel> ret;  //发生事件对应的channel
   while (!quit_) {
     // cout << "doing" << endl;
     ret.clear();
@@ -103,8 +103,8 @@ void EventLoop::loop() {
     eventHandling_ = true;
     for (auto& it : ret) it->handleEvents();
     eventHandling_ = false;
-    doPendingFunctors();
-    poller_->handleExpired();
+    doPendingFunctors();        //其他线程执行runinloop后的函数会放在dopendingfunctors中
+    poller_->handleExpired();    //分发处理函数
   }
   looping_ = false;
 }
