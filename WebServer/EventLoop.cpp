@@ -99,7 +99,7 @@ void EventLoop::loop() {
   while (!quit_) {
     // cout << "doing" << endl;
     ret.clear();
-    ret = poller_->poll();
+    ret = poller_->poll();    //返回的是事件就绪的channel
     eventHandling_ = true;
     for (auto& it : ret) it->handleEvents();
     eventHandling_ = false;
