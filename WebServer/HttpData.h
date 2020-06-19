@@ -91,14 +91,14 @@ class HttpData : public std::enable_shared_from_this<HttpData> {
   std::string inBuffer_;
   std::string outBuffer_;
   bool error_;
-  ConnectionState connectionState_;
+  ConnectionState connectionState_;   //连接状态
 
   HttpMethod method_;
   HttpVersion HTTPVersion_;
   std::string fileName_;
   std::string path_;
   int nowReadPos_;
-  ProcessState state_;
+  ProcessState state_;   //进程状态
   ParseState hState_;
   bool keepAlive_;
   std::map<std::string, std::string> headers_;
