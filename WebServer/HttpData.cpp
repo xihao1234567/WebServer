@@ -332,9 +332,9 @@ URIState HttpData::parseURI() {
   else
     str.clear();
   // Method
-  int posGet = request_line.find("GET");
-  int posPost = request_line.find("POST");
-  int posHead = request_line.find("HEAD");
+  int posGet = request_line.find("GET");          //获取URL页面
+  int posPost = request_line.find("POST");        //传输实体的主体，告诉服务器
+  int posHead = request_line.find("HEAD");        //获取资源的头部，用于确认URL的有效性
 
   if (posGet >= 0) {
     pos = posGet;
